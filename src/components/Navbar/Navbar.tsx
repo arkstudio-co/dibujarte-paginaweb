@@ -18,10 +18,10 @@ export default function Navbar() {
       <div className={styles.inner}>
         <a href="#hero" className={styles.logo}>
           <Image
-            src="/images/logo.jpg"
+            src="/images/logopng.png"
             alt="Dibujarte"
-            width={140}
-            height={48}
+            width={180}
+            height={64}
             className={styles.logoImg}
           />
         </a>
@@ -34,7 +34,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <a href="#contact" className={styles.cta}>Get Started</a>
+        <a href="#activity" className={styles.cta}>Exploremos</a>
 
         <button
           className={styles.hamburger}
@@ -59,11 +59,11 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="#contact"
+          href="#activity"
           className={styles.mobileCta}
           onClick={() => setMenuOpen(false)}
         >
-          Get Started
+          Exploremos
         </a>
       </div>
     </nav>

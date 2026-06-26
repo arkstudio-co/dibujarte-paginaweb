@@ -36,9 +36,8 @@ export const products: Product[] = [
 ];
 
 export const navLinks = [
-  { label: "Hero", href: "#hero" },
-  { label: "Products", href: "#products" },
-  { label: "About", href: "#about" },
-  { label: "Activity", href: "#activity" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#hero" },
+  { label: "Material", href: "#products" },
+  { label: "Nosotros", href: "#about" },
+  { label: "Contacto", href: "#contact" },
 ];
