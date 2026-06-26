@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <rect width="300" height="300" rx="20" fill="#e0f5ec"/>
+  <text x="150" y="140" text-anchor="middle" font-family="Quicksand" font-size="24" fill="#076c4d">🧩</text>
+  <text x="150" y="180" text-anchor="middle" font-family="Quicksand" font-size="18" fill="#005139" font-weight="600">Motricidad</text>
+</svg>

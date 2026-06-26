@@ -1,0 +1,166 @@
+:root {
+  --ink-blue: #000B21;
+  --primary: #00677e;
+  --on-primary: #ffffff;
+  --primary-container: #5dc1e0;
+  --primary-fixed: #b4ebff;
+  --primary-fixed-dim: #71d3f3;
+  --on-primary-container: #004d5f;
+  --on-primary-fixed: #001f28;
+  --on-primary-fixed-variant: #004e5f;
+  --inverse-primary: #71d3f3;
+
+  --secondary: #6e5d00;
+  --on-secondary: #ffffff;
+  --secondary-container: #f8df75;
+  --secondary-fixed: #fbe278;
+  --secondary-fixed-dim: #dec65f;
+  --on-secondary-container: #736200;
+  --on-secondary-fixed: #221b00;
+  --on-secondary-fixed-variant: #534600;
+
+  --tertiary: #076c4d;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #71c5a0;
+  --tertiary-fixed: #9ff4cc;
+  --tertiary-fixed-dim: #83d7b1;
+  --on-tertiary-container: #005139;
+  --on-tertiary-fixed: #002115;
+  --on-tertiary-fixed-variant: #005139;
+
+  --play-orange: #FFAD60;
+  --creative-pink: #F7C1BB;
+
+  --surface: #fbf9f1;
+  --surface-dim: #dcdad2;
+  --surface-bright: #fbf9f1;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f5f4ec;
+  --surface-container: #f0eee6;
+  --surface-container-high: #eae8e0;
+  --surface-container-highest: #e4e3db;
+  --on-surface: #1b1c17;
+  --on-surface-variant: #3e484d;
+  --inverse-surface: #30312c;
+  --inverse-on-surface: #f3f1e9;
+  --surface-variant: #e4e3db;
+
+  --outline: #6e797d;
+  --outline-variant: #bdc8cd;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  --surface-tint: #00677e;
+  --background: #fbf9f1;
+  --on-background: #1b1c17;
+
+  --font-display: 'Quicksand', sans-serif;
+  --font-headline: 'Quicksand', sans-serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+
+  --space-base: 8px;
+  --space-gutter: 24px;
+  --space-margin-mobile: 20px;
+  --space-margin-desktop: 64px;
+  --space-section-gap: 80px;
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sparkleAnim {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
