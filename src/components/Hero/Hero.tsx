@@ -18,20 +18,14 @@ export default function Hero() {
 
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Donde cada trazo se convierte en una{" "}
-          <span className={styles.titleAccent}>aventura</span>
+          Cada trazo es una aventura
         </h1>
         <p className={styles.subtitle}>
-          Cuadernos diseñados para que los niños aprendan jugando, imaginando y
-          descubriendo nuevas habilidades cada día.
+          Aprendamos jugando, imaginando y descubriendo nuestras habilidades
         </p>
         <div className={styles.actions}>
           <a href="#contact" className={styles.ctaPrimary}>
             Contáctanos
-          </a>
-          <a href="#products" className={styles.ctaSecondary}>
-            Ver Catálogo
-            <span className="material-symbols-outlined">arrow_forward</span>
           </a>
         </div>
       </div>
