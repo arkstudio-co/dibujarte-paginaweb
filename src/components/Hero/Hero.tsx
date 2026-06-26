@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={styles.section} id="hero">
       <div className={styles.bgWrapper}>
         <Image
-          src="/images/hero-bg.svg"
+          src="/images/hero.jpg"
           alt=""
           fill
           className={styles.bgImage}
