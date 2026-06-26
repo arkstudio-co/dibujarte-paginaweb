@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { navLinks } from "@/data/products";
 import styles from "./Navbar.module.css";
 
@@ -15,7 +16,15 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.inner}>
-        <a href="#hero" className={styles.logo}>Dibujarte</a>
+        <a href="#hero" className={styles.logo}>
+          <Image
+            src="/images/logo.jpg"
+            alt="Dibujarte"
+            width={140}
+            height={48}
+            className={styles.logoImg}
+          />
+        </a>
 
         <div className={styles.desktopLinks}>
           {navLinks.map((link) => (

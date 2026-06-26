@@ -24,12 +24,13 @@
 }
 
 .logo {
-  font-family: var(--font-headline);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 36px;
+  width: auto;
 }
 
 .desktopLinks {

@@ -1,9 +1,18 @@
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.brand}>Dibujarte</div>
+      <div className={styles.brand}>
+        <Image
+          src="/images/logo.jpg"
+          alt="Dibujarte"
+          width={160}
+          height={56}
+          className={styles.brandImg}
+        />
+      </div>
       <p className={styles.tagline}>
         &ldquo;Aprender, imaginar y crecer juntos.&rdquo;
       </p>
