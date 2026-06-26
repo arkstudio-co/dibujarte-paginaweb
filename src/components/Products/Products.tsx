@@ -20,7 +20,7 @@ export default function Products() {
   return (
     <section className={styles.section} id="products">
       <div className={styles.header}>
-        <h2 className={styles.title}>Productos Destacados</h2>
+        <h2 className={styles.title}>Material Educativo</h2>
         <div className={styles.divider} />
       </div>
 
