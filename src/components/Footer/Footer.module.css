@@ -18,8 +18,7 @@
 }
 
 .brandImg {
-  height: 48px;
-  width: auto;
+  max-width: 100%;
 }
 
 .tagline {
