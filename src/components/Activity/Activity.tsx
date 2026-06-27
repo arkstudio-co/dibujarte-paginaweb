@@ -1,10 +1,22 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useId } from "react";
 import styles from "./Activity.module.css";
 
 const TOTAL = 9;
 const GRID = 3;
+
+const PIECE_PATHS = [
+  "M 0 0 L 100 0 L 100 42 A 8 8 0 0 1 100 58 L 100 100 L 58 100 A 8 8 0 0 1 42 100 L 0 100 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 0 58 0 L 100 0 L 100 42 A 8 8 0 0 1 100 58 L 100 100 L 58 100 A 8 8 0 0 0 42 100 L 0 100 L 0 58 A 8 8 0 0 0 0 42 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 0 58 0 L 100 0 L 100 100 L 58 100 A 8 8 0 0 1 42 100 L 0 100 L 0 58 A 8 8 0 0 0 0 42 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 0 58 0 L 100 0 L 100 42 A 8 8 0 0 1 100 58 L 100 100 L 58 100 A 8 8 0 0 1 42 100 L 0 100 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 1 58 0 L 100 0 L 100 42 A 8 8 0 0 0 100 58 L 100 100 L 58 100 A 8 8 0 0 0 42 100 L 0 100 L 0 58 A 8 8 0 0 0 0 42 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 0 58 0 L 100 0 L 100 100 L 58 100 A 8 8 0 0 0 42 100 L 0 100 L 0 58 A 8 8 0 0 1 0 42 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 0 58 0 L 100 0 L 100 42 A 8 8 0 0 1 100 58 L 100 100 L 0 100 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 1 58 0 L 100 0 L 100 42 A 8 8 0 0 0 100 58 L 100 100 L 0 100 L 0 58 A 8 8 0 0 0 0 42 Z",
+  "M 0 0 L 42 0 A 8 8 0 0 1 58 0 L 100 0 L 100 100 L 0 100 L 0 58 A 8 8 0 0 1 0 42 Z",
+];
 
 interface DragState {
   id: number;
@@ -23,14 +35,31 @@ function shuffle(arr: number[]): number[] {
   return a;
 }
 
-function bgPos(id: number) {
+function PuzzlePiece({ id, className }: { id: number; className?: string }) {
+  const uid = useId();
+  const clipId = `clip-${uid}`;
   const col = id % GRID;
   const row = Math.floor(id / GRID);
-  return {
-    backgroundImage: "url(/images/rompecabezas.jpg)",
-    backgroundSize: "300%",
-    backgroundPosition: `${col * 50}% ${row * 50}%`,
-  };
+
+  return (
+    <svg viewBox="-8 -8 116 116" className={className} preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <clipPath id={clipId}>
+          <path d={PIECE_PATHS[id]} />
+        </clipPath>
+      </defs>
+      <image
+        href="/images/rompecabezas.jpg"
+        x={-col * 100 - 8}
+        y={-row * 100 - 8}
+        width={316}
+        height={316}
+        clipPath={`url(#${clipId})`}
+        preserveAspectRatio="xMidYMid slice"
+      />
+      <path d={PIECE_PATHS[id]} fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="0.8" />
+    </svg>
+  );
 }
 
 export default function Activity() {
@@ -106,23 +135,51 @@ export default function Activity() {
   return (
     <section className={styles.section} id="activity">
       <div className={styles.container}>
-        <h2 className={styles.title}>Actividad Interactiva: ¡Arma el Rompecabezas!</h2>
+        <h2 className={styles.title}>¡Arma el Rompecabezas!</h2>
         <p className={styles.subtitle}>
           Arrastra las piezas a su lugar para descubrir el mundo Dibujarte.
         </p>
 
         <div className={styles.puzzleGrid} ref={gridRef} style={{ pointerEvents: drag ? "none" : "auto" }}>
+          {/* slot backgrounds */}
           {Array.from({ length: TOTAL }, (_, i) => i).map((slotId) => {
-            const pieceId = grid[slotId];
+            const col = slotId % GRID;
+            const row = Math.floor(slotId / GRID);
+            const isFilled = grid[slotId] !== null;
             return (
               <div
                 key={slotId}
-                className={`${styles.slot} ${pieceId !== null ? styles.slotFilled : ""}`}
+                className={`${styles.slot} ${isFilled ? styles.slotFilled : ""}`}
                 data-slot={slotId}
+                style={{
+                  left: `${col * 33.3333}%`,
+                  top: `${row * 33.3333}%`,
+                  width: "33.3333%",
+                  height: "33.3333%",
+                }}
+              />
+            );
+          })}
+
+          {/* placed pieces */}
+          {Array.from({ length: TOTAL }, (_, i) => i).map((slotId) => {
+            const pieceId = grid[slotId];
+            if (pieceId === null) return null;
+            const col = slotId % GRID;
+            const row = Math.floor(slotId / GRID);
+            return (
+              <div
+                key={`p-${slotId}`}
+                className={styles.pieceWrapper}
+                style={{
+                  left: `${col * 33.3333}%`,
+                  top: `${row * 33.3333}%`,
+                  width: "33.3333%",
+                  height: "33.3333%",
+                  zIndex: 100 - (row * GRID + col),
+                }}
               >
-                {pieceId !== null && (
-                  <div className={styles.placedPiece} style={bgPos(pieceId)} />
-                )}
+                <PuzzlePiece id={pieceId} className={styles.pieceSvg} />
               </div>
             );
           })}
@@ -138,9 +195,10 @@ export default function Activity() {
             <div
               key={id}
               className={styles.bankPiece}
-              style={bgPos(id)}
               onPointerDown={(e) => handlePointerDown(e, id)}
-            />
+            >
+              <PuzzlePiece id={id} className={styles.pieceSvg} />
+            </div>
           ))}
         </div>
 
@@ -148,16 +206,17 @@ export default function Activity() {
           <div
             className={styles.clone}
             style={{
-              ...bgPos(drag.id),
               left: clonePos.x - drag.offsetX,
               top: clonePos.y - drag.offsetY,
             }}
-          />
+          >
+            <PuzzlePiece id={drag.id} className={styles.pieceSvg} />
+          </div>
         )}
 
         {allDone && (
           <p className={styles.celebration}>
-            ¡Excelente trabajo! Sigue explorando el mundo Dibujarte.
+            ¡Excelente! Sigue explorando el mundo Dibujarte
           </p>
         )}
 

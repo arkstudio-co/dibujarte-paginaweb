@@ -8,7 +8,7 @@ export default function About() {
         <div className={styles.imageColumn}>
           <div className={styles.imageGlow} />
           <Image
-            src="/images/about-child.svg"
+            src="/images/Nosotros.jpg"
             alt="Niño aprendiendo con Dibujarte"
             width={600}
             height={500}
@@ -22,16 +22,11 @@ export default function About() {
         <div className={styles.textColumn}>
           <div className={styles.tag}>Sobre Dibujarte</div>
           <h2 className={styles.title}>
-            Creando experiencias de aprendizaje único.
+            Una experiencias de aprendizaje único
           </h2>
           <p className={styles.paragraph}>
-            Dibujarte nace con el propósito de acompañar a los niños en sus
-            primeros pasos por el mundo del saber. No solo hacemos cuadernos;
-            creamos puentes entre la imaginación y la realidad.
-          </p>
-          <p className={styles.paragraph}>
-            Nuestra misión es transformar cada lección en un juego, cada página
-            en un descubrimiento y cada trazo en una pequeña gran victoria.
+            Acompañamos a los niños en sus primeros pasos por el mundo del conocimiento, creando puentes entre la imaginación y la realidad.
+            Queremos transformar cada lección en un juego y cada trazo en un gran descubrimiento.
           </p>
           <div className={styles.stats}>
             <div className={styles.statItem}>

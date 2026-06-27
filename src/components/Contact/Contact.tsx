@@ -9,19 +9,18 @@ export default function Contact() {
         </div>
 
         <div className={styles.infoColumn}>
-          <h2 className={styles.title}>Cuéntanos sobre tu proyecto</h2>
+          <h2 className={styles.title}>Queremos conocerte</h2>
           <p className={styles.desc}>
-            Estamos ansiosos por escucharte y ayudarte a llevar educación
-            creativa a más manos.
+            Estamos listos para llevar la educación creativa a más niños.
           </p>
           <div className={styles.contactItems}>
             <div className={styles.contactItem}>
               <span className="material-symbols-outlined">mail</span>
-              <span>hola@dibujarte.com</span>
+              <span>dibujartesas@gmail.com</span>
             </div>
             <div className={styles.contactItem}>
               <span className="material-symbols-outlined">call</span>
-              <span>+54 11 1234-5678</span>
+              <span>+57 3045904115</span>
             </div>
           </div>
         </div>
@@ -45,7 +44,7 @@ export default function Contact() {
           </div>
           <div className={styles.field}>
             <label className={styles.label}>Teléfono</label>
-            <input className={styles.input} placeholder="+54..." type="tel" />
+            <input className={styles.input} placeholder="+57..." type="tel" />
           </div>
           <div className={styles.field}>
             <label className={styles.label}>Institución</label>
